@@ -60,6 +60,7 @@ public class DemoTransactionHandler implements TransactionHandler {
             if(!description.contains("Engineer")){
                 throw new InvalidTransactionException("Sorry the transaction contains the doctor string");
             }
+            System.out.println("Transaction id in transaction processor - "+tpProcessRequest.getSignature());
             // Creating String from the transaction
             String forGlobalState = "Name:"+td.getName()+","+"Description:"+td.getDescription();
             byte[] forGlobalStateBytes = forGlobalState.getBytes();

@@ -22,7 +22,7 @@ public class ReceivingClient {
     public static void main(String ... args) throws IOException, CborException {
         //paste the link below and run the program
         String link = "http://192.168.99.100:8008/transactions?" +
-                "id=86d499dad8320ed2992450bc7288a9b5fccfc5f22687e381f1101f290184092f3171afa7dd26c96e308a40de27d3e8e0dcf7b761ea4ddc0848a79754f29eb058";
+                "id=695c04519f9852ed26f11a1cd6b526e61ace4400f5c36a32bdcb0f03d46ffd5448ba09e8addf1b9e5445b6429404bfc387b6f9e30648331823872f38a7fbf197";
         //Creating httpclient
         CloseableHttpClient httpClient = HttpClients.createDefault();
         HttpGet httpGet = new HttpGet(link);

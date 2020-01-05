@@ -58,9 +58,11 @@ public class Client {
                 ).build();
         // Signer signing the transaction header
         String signature = signer.sign(header.toByteArray());
+        // Transaction id is same as the signature of the transaction converted to string
+        System.out.println("Transaction Id"+signature.toString());
         //Single Transaction
         Transaction transaction = Transaction.newBuilder().setHeader(header.toByteString()).setPayload(ByteString.copyFrom(payloadBytes)).setHeaderSignature(signature).build();
-        //Adding the transaction to list
+       //Adding the transaction to list
         List<Transaction> transactions = new ArrayList<>();
         transactions.add(transaction);
         //Creating Batch Header
@@ -68,6 +70,8 @@ public class Client {
                 .addAllTransactionIds(transactions.stream().map(Transaction::getHeaderSignature).collect(Collectors.toList())).build();
         //Batch Signature
         String batchSignature = signer.sign(batchHeader.toByteArray());
+        //Batch id is same the batch signature converted to string
+        System.out.println("batch id"+batchSignature.toString());
         //Batch creation
         Batch batch = Batch.newBuilder().setHeader(batchHeader.toByteString()).addAllTransactions(transactions).setHeaderSignature(batchSignature).build();
         //Batch in byte array
